@@ -38095,9 +38095,10 @@ polygon.tester = function tester(ptsIn) {
  * @param end the index of the proposed end point
  * @param tolerance the max distance off the line connecting start and end
  *      before the line counts as bent
+ *
  * @returns boolean: true means this segment is bent, false means straight
  */
-var isBent = polygon.isSegmentBent = function isBent(pts, start, end, tolerance) {
+polygon.isSegmentBent = function isBent(pts, start, end, tolerance) {
     var startPt = pts[start],
         segment = [pts[end][0] - startPt[0], pts[end][1] - startPt[1]],
         segmentSquared = dot(segment, segment),
@@ -38116,6 +38117,7 @@ var isBent = polygon.isSegmentBent = function isBent(pts, start, end, tolerance)
     }
     return false;
 };
+var isBent = polygon.isSegmentBent;
 
 /**
  * Make a filtering polygon, to minimize the number of segments
